@@ -1,0 +1,57 @@
+﻿@model IEnumerable<FlatsManagement.Models.RMC>
+
+@{
+    ViewBag.Title = "ManageRents";
+}
+
+<div class="jumbotron">
+    <h1>Manage Customers and Rents</h1>
+</div>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.f_id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.c_id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.c_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.c_phone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.r_status)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.f_id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.c_id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.c_name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.c_phone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.r_status)
+        </td>
+        <td>
+            @if (item.r_status != "Paid")
+            {@Html.ActionLink("Clear Rent", "Edit", new { id = item.c_id, status = item.r_status }, null)}
+
+        </td>
+    </tr>
+}
+
+</table>

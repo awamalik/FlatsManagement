@@ -1,0 +1,39 @@
+﻿@model IEnumerable<FlatsManagement.Models.Flats>
+
+@{
+    ViewBag.Title = "Rented Flats";
+}
+
+<div class="jumbotron">
+    <h1>Rented Flats</h1>
+</div>
+
+@foreach (var item in Model)
+{
+
+
+<div class="col-md-4">
+    <img src="@item.f_image " height="200" width="200" />
+
+    <h4>@Html.DisplayFor(modelItem => item.f_type) Flat</h4>
+    <table>
+        <tr>
+            <td><img src="~/Images/Icons/room-02.svg" height="30" width="30" />   @Html.DisplayFor(modelItem => item.f_rooms)   </td>
+            <td><b>     </b></td>
+            <td><img src="~/Images/Icons/kitch-02.svg" height="30" width="30" />   @Html.DisplayFor(modelItem => item.f_kitchens)   </td>
+        </tr>
+        <tr>
+            <td><img src="~/Images/Icons/hall-02.svg" height="30" width="30" />   @Html.DisplayFor(modelItem => item.f_hall)   </td>
+            <td><b>     </b></td>
+            <td><img src="~/Images/Icons/bath-02.svg" height="30" width="30" />   @Html.DisplayFor(modelItem => item.f_baths)   </td>
+        </tr>
+    </table>
+    <p>@Html.DisplayFor(modelItem => item.f_location)</p>
+
+    @*@Html.ActionLink("Add Part", "ShopPartsEntry", "SAP", new { a_id = item.a_id, aname = item.aname, acompany = item.company }, null) |
+        @Html.ActionLink("View Parts", "ViewShopParts", "SAP", new { a_id = item.a_id, aname = item.aname, acompany = item.company }, null)*@
+
+    @Html.ActionLink("Delete Customer", "DeleteCustomer", "Flats", new { f_id = item.f_id }, null) |
+    @Html.ActionLink("Details", "Details", "Flats", new { f_id = item.f_id }, null)
+</div>
+}
